@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppisns')
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family:'Poppins', sans-serif;
+}
+
+body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: url('fondo4.jpg') no-repeat;
+	background-size:cover;
+	background-position: center; 
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 99.3%;
+	padding: 10px 5px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 99;
+}
+
+.logo{
+	font-size: 1.1em;
+	color: #fff;
+	user-select: none;
+}
+
+.navigation a{
+	position: relative;
+	font-size: 1em;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 500;
+	margin-left: 60px;
+}
+
+.navigation a::after{
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -6px;
+	width: 100%;
+	height: 3px;
+	background: #fff;
+	border-radius: 5px;
+	transform-origin: right;
+	transform: scaleX(0);
+	transition: transform.5s;
+}
+
+.navigation a:hover::after{
+	transform-origin: left;
+	transform: scaleX(1);
+}
+
+.navigation .btnLogin-popup{
+	width: 100px;
+	height: 40px;
+	background: transparent;
+	border:2px solid #fff;
+	outline: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1.1em;
+	color: #fff;
+	font-weight: 500;
+	margin-left: 40px;
+	transition: .5s;
+}
+
+.navigation .btnLogin-popup:hover {
+	background: #fff;
+	color: #162938;
+}
+/*para la caja, backdrop-filter es para la opacidad de la caja*/
+.wrapper{
+	position: relative;
+	width: 400px; /* para el lo ancho de la caja*/
+	height: 420px;  /* para el alto de la caja */
+	background: transparent;
+	border: 2px solid rgba(255, 255, 255, .5);
+	border-radius: 20px;
+	backdrop-filter: blur(20px);
+	box-shadow: 0 0 60px rgba(0, 0, 0, .5);
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	overflow: hidden;   /*para que se ajusten a la caja*/
+	transform: scale(0);
+	transition: transform .5s ease,height .2s ease;
+}
+
+.wrapper.active-popup{
+	transform: scale(1);
+}
+
+.wrapper.active{
+	height: 520px;
+}
+/* aqui movemos las cajas a los lados, y en java ocultamos una de las dos cajas*/
+.wrapper .form-box{
+	width: 100%;
+	padding: 40px;
+}
+
+.wrapper .form-box.login{
+	transition: transform .18s ease;
+	transform: translateX(-40px);
+}
+
+.wrapper.active .form-box.login{
+	transition: none;
+	transform: translateX(-450px);
+}
+
+.wrapper .form-box.register{
+	position: absolute;
+	transition: none;
+	transform: translateX(450px);
+}
+
+.wrapper.active .form-box.register{
+	transition: transform .18s ease;
+	transform: translateX(0);
+}
+
+
+.wrapper .icon-close{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 35px;
+	height: 35px;
+	background: transparent;
+	font-size: 1.5em;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom-left-radius: 20px;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.form-box h2 {
+	font-size: 2em;
+	color: white;
+	text-align: center;
+}
+
+.input-box{
+	position: relative;
+	width: 100%;
+	height: 40px;
+	border-bottom: 2px solid #162938;
+	margin: 30px 0 ;
+}
+
+/*para las etiquetas email y password*/
+.input-box label {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1em;
+	color: white;
+	font-weight: 500;
+	pointer-events: none;
+	transition: .5s;
+}
+/*controlamos el desplazamiento del texto email y password*/
+.input-box input:focus~label,
+.input-box input:valid~label{
+	top: -6px;
+}
+
+.input-box input {
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	border:none;
+	outline: none;
+	font-size: 1em;
+	color: white;
+	font-weight: 600;
+	padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+	position: absolute;
+	right: 8px;
+	font-size: 1.2em;
+	color: #fff;
+	line-height: 57px;
+}
+
+.remember-forgot{
+	font-size: 0.8em;
+	color: #FFE183;
+	font-weight: 500;
+	margin: -15px 0 15px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.remember-forgot label input{
+	accent-color: #FFE183;
+	margin-right: 3px;
+}
+
+.remember-forgot a{
+	color: #FFE183;
+	text-decoration: none;
+}
+
+.remember-fotgot a:hover {
+	text-decoration: underline;
+}
+/* Diseño del botno y color de letra para link*/
+.btn {
+	width: 100%;
+	height: 34px;
+	background: #162938;
+	border:none;
+	outline: none;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1em;
+	color: #fff;
+	font-weight: 500;
+}
+.btn a{
+	color: #fff
+}
+
+.logig-register{
+	font-size: .8em;
+	color: #fff;
+	text-align: center;
+	font-weight: 500;
+	margin: 25px 0 10px;
+}
+
+.login-register a{
+	color: #2E6C9E;
+	text-decoration: none;
+	font-weight: 600;
+	text-align: center;
+}
+
+.login-register p{
+	color: #63B9FC;
+	text-decoration: none;
+	font-weight: 600;
+	text-align: center;
+}
+
+.login-register p a:hover;{
+	text-decoration: underline;
+}
